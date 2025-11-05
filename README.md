@@ -3,17 +3,17 @@
 - /etc/systemd/system/xray.service
 - /etc/systemd/system/xray@.service
 
-- /usr/local/bin/xray
-- /usr/local/etc/xray/*.json
+- /home/xray/xray
+- /home/xray/*.json
 
-- /usr/local/share/xray/geoip.dat
-- /usr/local/share/xray/geosite.dat
+- /home/xray/dat/geoip.dat
+- /home/xray/dat/geosite.dat
 
-- /var/log/xray/access.log
-- /var/log/xray/error.log
+- /home/xray/log/access.log
+- /home/xray/log/error.log
 ```
 
-注意：Xray 默认不会将日志记录到 `/var/log/xray/*.log`。请配置 `"log"` 来指定日志文件。
+注意：Xray 默认不会将日志记录到 `/home/xray/log/*.log`。请配置 `"log"` 来指定日志文件。
 
 ## 基本用法
 
