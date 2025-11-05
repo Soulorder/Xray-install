@@ -30,20 +30,21 @@ jobs:
           SRC="/tmp/install-release.upstream.sh"
           TMP="/tmp/install-release.transformed.sh"
 
-          # 路径替换
           sed -e 's#/usr/local/share/xray#/home/xray/dat#g' \
-              -e 's#/usr/local/etc/xray#/home/xray#g' \
+              -e 's#/usr/local/etc/xray#/home/xray/config#g' \
               -e 's#/usr/local/bin/#/home/xray/#g' \
               -e 's#/var/log/xray/#/home/xray/log/#g' \
               "$SRC" \
-          | awk '1; /# Gobal verbals/ {print "mkdir -p /home/xray/{log,dat}"}' \
+          | awk '1; 
+              /# Gobal verbals/ {print "mkdir -p /home/xray/{log,dat}"}
+              /^User=\$INSTALL_USER$/ {print "Environment=XRAY_LOCATION_ASSET=/home/xray/dat"}
+          ' \    
           > "$TMP"
 
           chmod +x "$TMP"
-          # 统一行尾为 LF
+
           sed -i 's/\r$//' "$TMP"
 
-          # 目标文件保存在仓库根目录；如需放到别处可改这个变量
           TARGET="install-release.sh"
 
           if [ ! -f "$TARGET" ]; then
