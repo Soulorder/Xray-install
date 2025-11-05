@@ -3,7 +3,6 @@ name: Update Xray install script
 on:
   workflow_dispatch: {}
   schedule:
-    # 每天凌晨0点检查一次
     - cron: "0 0 * * *"
 
 permissions:
@@ -35,7 +34,8 @@ jobs:
               -e 's#/usr/local/bin/#/home/xray/#g' \
               -e 's#/var/log/xray/#/home/xray/log/#g' \
               "$SRC" \
-          | awk '1; /# Gobal verbals/ {print "mkdir -p /home/xray/{log,dat}"}; /^User=\$INSTALL_USER$/ {print "Environment=XRAY_LOCATION_ASSET=/home/xray/dat"}'
+          | awk '1; /# Gobal verbals/ {print "mkdir -p /home/xray/{log,dat}"}' \
+          | awk '1; /^User=\$INSTALL_USER$/ {print "Environment=XRAY_LOCATION_ASSET=/home/xray/dat"}' \
           > "$TMP"
 
           chmod +x "$TMP"
