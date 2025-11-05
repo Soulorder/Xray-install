@@ -3,8 +3,8 @@ name: Update Xray install script
 on:
   workflow_dispatch: {}
   schedule:
-    # 每6小时检查一次
-    - cron: "0 */6 * * *"
+    # 每天凌晨0点检查一次
+    - cron: "0 0 * * *"
 
 permissions:
   contents: write
