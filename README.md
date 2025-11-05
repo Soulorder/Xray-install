@@ -20,13 +20,13 @@
 **安装并升级 Xray-core 和地理数据，默认使用 `User=nobody`，但不会覆盖已有服务文件中的 `User` 设置**
 
 ```
-bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
+bash -c "$(curl -L [https://github.com/XTLS/Xray-install/raw/main/install-release.sh](https://github.com/Soulorder/Xray-install/raw/refs/heads/main/install-release.sh))" @ install
 ```
 
 **仅更新 geoip.dat 和 geosite.dat**
 
 ```
-bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install-geodata
+bash -c "$(curl -L [https://github.com/XTLS/Xray-install/raw/main/install-release.sh](https://github.com/Soulorder/Xray-install/raw/refs/heads/main/install-release.sh))" @ install-geodata
 ```
 
 **移除 Xray，但保留 json 配置文件和日志**
